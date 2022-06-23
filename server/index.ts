@@ -1,7 +1,7 @@
 import express from 'express';
 import isOdd from './is-odd';
 
-const PORT = 3000;
+const PORT = 3001;
 const app = express();
 
 app.get('/is-odd/:input?', isOdd);
