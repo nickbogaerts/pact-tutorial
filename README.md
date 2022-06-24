@@ -32,7 +32,7 @@ The API we wish to implement is as follows. All responses are to be in JSON form
 {
     "status": 200,
     "input": "69",
-    "odd": "true"
+    "odd": true
 }
 ```
 
@@ -42,7 +42,7 @@ The API we wish to implement is as follows. All responses are to be in JSON form
 {
     "status": 200,
     "input": "-420",
-    "odd": "false"
+    "odd": false
 }
 ```
 
