@@ -1,15 +1,28 @@
-import { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 import { AppBar, Grid, Toolbar, Container, Button, TextField, Typography } from '@mui/material';
+import IsOddProvider from './IsOddProvider';
 
-function App() {
+function App(): JSX.Element {
   const [input, setInput] = useState('');
-  const [error, setError] = useState(null);
-  const [response, setResponse] = useState(null);
+  const [error, setError] = useState(false);
+  const [response, setResponse] = useState('');
 
-  const handleSubmit = e => {
+  const isOddProvider = IsOddProvider(3001);
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError(true);
-    setResponse(`Checking oddity of '${input} is not implemented yet`);
+    try {
+      const isOdd = await isOddProvider(input);
+      setError(false);
+      if (isOdd) {
+        setResponse(`Remarkable! ${input} is indeed odd.`);
+      } else {
+        setResponse(`Sorry, ${input} does not seem to be odd.`);
+      }
+    } catch (e: any) {
+      setError(true);
+      setResponse(e?.message);
+    }
   };
 
   return (
@@ -25,14 +38,14 @@ function App() {
       <Container maxWidth={false}>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            <Grid item xs="12">
+            <Grid item xs={12}>
               <Typography variant="h6">Use our patented SaaS solution to find out</Typography>
             </Grid>
             <Grid item>
               <TextField
                 label="Is it odd?"
                 value={input}
-                onChange={e => setInput(e.target.value)}
+                onChange={(e: FormEvent) => setInput((e.target as HTMLInputElement).value)}
               />
             </Grid>
             <Grid item>
@@ -41,11 +54,11 @@ function App() {
               </Button>
             </Grid>
             {response && (
-              <Grid item xs="12">
+              <Grid item xs={12}>
                 <Typography color={error ? 'red' : 'black'}>{response}</Typography>
               </Grid>
             )}
-            <Grid item xs="12">
+            <Grid item xs={12}>
               <Typography variant="h6">Coming soon...</Typography>
               <Typography>
                 <em>Is it even?</em> as a service
