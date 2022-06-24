@@ -6,13 +6,13 @@ This revolutionary appliction consists of a React-Single-Page application, and a
 
 ## Running the applications
 
-Both the client and the server can be started by running `npm start` in their respective folders and
+Both the client and the server can be started by running `npm start` in their respective folders. THe server will be started port 3001, and the client from port 3000 by default.
 
 ## Your task
 
 In order to accelerate the delivery of the software, the backend has been outsourced to a third-party consultant. Your task is to build the frontend, and validate the functionality of the provided backend. Your tasks are as follows:
 
-1. Write consumer-driven contract tests for the application (see the API specification below).
+1. Write consumer-driven contract tests for the application (see the API specification below). There is a sample already existing, which can be run with `npm run pact-test`.
 
 2. Once these are ready, start the pact mock server, and use this to aid you in implementing the single-page application.
 
