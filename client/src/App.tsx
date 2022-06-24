@@ -7,7 +7,7 @@ function App(): JSX.Element {
   const [error, setError] = useState(false);
   const [response, setResponse] = useState('');
 
-  const isOddProvider = IsOddProvider(3001);
+  const isOddProvider = IsOddProvider('http://localhost:3001');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

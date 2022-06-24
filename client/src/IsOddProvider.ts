@@ -6,7 +6,7 @@
  */
 
 const isOddProvider =
-  (port: Number) =>
+  (basePAth: string) =>
   async (input: string): Promise<boolean> => {
     throw new Error(`This functionality has not been implemented yet`);
   };
